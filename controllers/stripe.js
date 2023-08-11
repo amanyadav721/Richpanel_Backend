@@ -30,11 +30,10 @@ export const stripe_pay = async (req, res) => {
         },
       ],
       mode: "subscription",
-      success_url: "/success",
-      cancel_url: "/cancel",
+      success_url: "https://richpanel-subscription.vercel.app//success",
+      cancel_url: "https://richpanel-subscription.vercel.app//cancel",
     });
     const user = await User.findOne({ email: email });
-    console.log(user);
     const newSubscription = new Subscription({
       user_id: user._id,
       date: new Date(),
@@ -45,12 +44,9 @@ export const stripe_pay = async (req, res) => {
       plan_id: plan.id,
       plan_price: plan.price,
     });
-    console.log(newSubscription);
     const savedSubscription = await newSubscription.save();
-    console.log(savedSubscription);
     res.json({ url: session.url, subscription: savedSubscription });
   } catch (e) {
-    console.log(e.message);
     res.status(500).json({ error: e.message });
   }
 };
