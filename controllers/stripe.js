@@ -4,8 +4,8 @@ import Subscription from "../model/Subscription.js";
 
 export const stripe_pay = async (req, res) => {
   try {
-    const stripe_key = process.env.STRIPE_PRIVATE_KEY;
-    const stripeInstance = new stripe(stripe_key);
+    const stripeInstance = new stripe(sk_test_51NdwQBSJif2NAhjTR4LpW99942do2oPSULlClEessXZ8SpovQjIul9FCTObhci7Fa2EUYxDSS604p2b8PlxStX8H00eYQKCW6h
+      );
 
     const { email, plan } = req.body;
 

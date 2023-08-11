@@ -39,7 +39,7 @@ export const signin = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ msg: "Invalid Credentials !" });
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign({ id: user._id }, "31i3919ji9r2i9JUfjsjfsfsjfnjff", { expiresIn: "1d" });
         let oldToken = user.tokens;
 
         if (oldToken.length > 0) {

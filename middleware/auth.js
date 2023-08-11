@@ -5,7 +5,7 @@ export const isAuth = async (req, res, next) => {
   try {
     if (req.headers && req.headers.authorization) {
       const token = req.headers.authorization;
-      const decode = jwt.verify(token, process.env.JWT_SECRET);
+      const decode = jwt.verify(token, "31i3919ji9r2i9JUfjsjfsfsjfnjff");
       const user = await User.findById(decode.id);
       if (!user) {
         return res.status(403).json({ msg: "Authorization denied." });
